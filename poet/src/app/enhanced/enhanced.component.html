@@ -1,0 +1,17 @@
+<h1>PoetryDb API Enhanced Call</h1>
+<div class="box">
+  <form #enhancedInput = "ngForm" (ngSubmit) = "onClickSubmit(enhancedInput.value)" >
+    <label for="type">Search Type:</label>
+    <select id="type" name="type" ngModel>
+      <option value="author">Author</option>
+      <option value="title">Title</option>
+      <option value="lines">Lines</option>
+    </select>
+    <label for="value">Value:</label>
+    <input type = "text" name="value" ngModel>
+    <input type = "submit" value = "submit">
+  </form>
+  <div class="inner-box">
+    <pre>{{result}}</pre>
+  </div>
+</div>
