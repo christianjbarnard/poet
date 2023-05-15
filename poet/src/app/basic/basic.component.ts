@@ -13,6 +13,7 @@ export class BasicComponent {
 
   constructor(private poetApiService: PoetApiService) {}
 
+  // Method to call the /author endpoint. Returns the full response.
   async getAuthors() {
     const result = await this.poetApiService.getAuthorBasic()
     console.log(result);
@@ -24,6 +25,7 @@ export class BasicComponent {
     )
   }
 
+  // Method to call the /title endpoint. Returns the full response.
   async getTitles() {
     const result = await this.poetApiService.getTitleBasic()
     console.log(result)

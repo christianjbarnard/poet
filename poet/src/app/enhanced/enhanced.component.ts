@@ -11,16 +11,27 @@ export class EnhancedComponent {
 
   constructor(private poetApiService: PoetApiService) {}
 
+  // Method to make call to the API with the form data. Displays data when received.
   async onClickSubmit(data: any) {
-    console.log(data);
-    const result = await this.poetApiService.getEnhanced(data.type, data.value)
-    if (result.status == 200 && result.data.status != '404') {
-      this.result = JSON.stringify({
-        'data': result.data,
-      }, null, 2)
+
+    // Throw alert if fields are empty
+    if (data.type === undefined || data.type === '' || data.type === undefined || data.type === '') {
+      alert("Must fill out all fields.")
     }
-    else (
-      alert("Error on request: Invalid value")
-    )
+    else {
+      // Get data from API service
+      const result = await this.poetApiService.getEnhanced(data.type, data.value)
+
+      // Format and show result on page
+      if (result.status == 200 && result.data.status != '404') {
+        this.result = JSON.stringify({
+          'data': result.data,
+        }, null, 2)
+      }
+      // Throw alert if error on request
+      else (
+        alert("Error on request: Invalid value")
+      )
+    }
   }
 }
